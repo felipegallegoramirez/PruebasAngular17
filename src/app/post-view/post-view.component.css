@@ -1,0 +1,177 @@
+.Photo-perfil{
+    width: 100%;
+    display: flex;
+    height: 52px;
+    align-items: center;
+}
+.Photo-perfil div {
+    width: 10%;
+
+}
+
+.Photo-perfil div img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1 ;
+}
+.Photo-perfil a{
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 10px;
+    color: var(--c2);
+}
+.imgPost:hover{
+    transform: scale3d(1.03,1.03,1.03);
+    transition: transform .6s ease;
+}
+.containerPost{
+    display: grid;
+    box-sizing: border-box;
+    overflow: hidden;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 60% 40%;
+    grid-template-areas: 
+    "img Bodyhome"
+    "img Bodyhome";
+
+    width: 70%;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+.imgPost{
+    padding: 2%;
+    grid-area: img;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform .6s ease;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.50));
+}
+.imgPost img{
+    border-left: 5px solid var(--c2);
+    border-right: 5px solid var(--c2);
+    border-top: 1px solid var(--c2);
+    border-bottom: 1px solid var(--c2);
+    background-color: var(--sw);
+    border-radius: 25px;
+    width: 100%;
+    object-fit: cover;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.50));
+}
+.bodyPost{
+    grid-area: Bodyhome;
+    display: flex;
+    margin-left: 20px;
+    flex-direction: column;
+}
+.body{
+    border-left:5px solid var(--c2);
+    border-right:5px solid var(--c2);
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    padding: 20px;  
+    width: 100%;
+    height: 100vh;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.50));
+    background-color: var(--sw);
+}
+.titlePost{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 20px;
+}
+.titlePost h2{
+    color: var(--c2);
+    font-size: 30px;
+}
+.DescriptionPost{
+    height: 200px;
+}
+.DescriptionPost p{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: scroll;
+    overflow-x: hidden;
+    
+    
+}
+
+.Likes{
+    display: flex;
+    align-items: center;
+}
+.NumberLikes{
+    margin-left: 4px;
+}
+
+/*----------Comments--------------*/
+.comments{
+    height: 50%;
+    width: 100%;
+
+}
+.inputsComment{
+    width: 100%;
+    height: 20%;
+    display: flex;
+
+    margin-bottom: 20px;
+}
+.inputsComment textarea{
+    border-radius: 5px;
+    width: 90%;
+    font-size: 14px;
+    resize: none;
+}
+.inputsComment button{
+    border-radius: 10px;
+    margin-left: 5px;
+    background-color: var(--c1);
+    border: none;
+    color: var(--sw);
+    width: 100px;
+    height: 37px;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+.inputsComment button:hover{
+    border: 2px solid var(--c1);
+    transition: all .5s ease;
+    background-color: var(--sw);
+    color: var(--c1);
+}
+.anyComment{
+    
+    width: 100%;
+    height: 70%;
+    box-sizing: border-box;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.descriptionComment{
+    margin: 0 20px 0 0;
+    width: 100%;
+    hyphens: auto;
+    word-wrap: break-word;
+    height: fit-content;
+}
+.userComment{
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding:  0 10px;
+    height: fit-content;
+    border-left: 5px solid var(--c1);
+    border-right: 5px solid var(--c1);
+    border-top: 1px solid var(--c1);
+    border-bottom: 1px solid var(--c1);
+}

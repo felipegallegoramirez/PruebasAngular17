@@ -1,0 +1,19 @@
+<section class="body-search">
+    <form class="inputSearch">
+        <input type="text" id="Searching">
+        <button>
+            <img src="./../../assets/searchIcon.png" alt="">
+        </button>
+    </form>
+    <div class="ResultSearch">
+        <a href="/Profile/{{user._id}}" class="ContainerProfile" id="ContainerProfile"  *ngFor=" let user of users">
+           
+                <img src="http://localhost:3000/public/images/{{user.files_id[0]}}" alt="">
+           
+            <div class="nameProfile">
+                <p class="nameP">{{user.name}}</p>
+                <p>{{user.category}}</p>
+            </div>
+        </a>
+    </div>
+</section>

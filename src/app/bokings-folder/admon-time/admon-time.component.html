@@ -1,0 +1,27 @@
+<div class="data">
+    <div class="time">
+      <h1>Configurar Hora</h1>
+      <button (click)="save()">Guardar</button>
+      <div class="days">
+        <div>
+            <div *ngFor="let day of data" class="days__day" (click)="change(day.i)">
+                <div>
+                    <p>{{day.i}}</p>
+                </div>
+                <p>{{day.dia2}}</p>
+            </div>
+            
+        </div>
+      </div>
+
+      <div class="hours">
+        <div (click)="configHour(hour.i)" *ngFor="let hour of hours" class="hours_card">
+            <p>{{hour.hour}}:00</p>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+  

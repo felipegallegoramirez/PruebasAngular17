@@ -1,0 +1,58 @@
+<div class="data">
+    <div class="service">
+      <h1>Selecionar servicios</h1>
+
+        <div *ngFor="let service of services;index as i;" class="card_service" (click)="select(i)">
+            <p>{{service.name}}</p>
+            <p>{{service.time}}H</p>
+            <p>{{service.description}}</p>
+            <p>{{service.price}} COP</p>
+        </div>
+
+    </div>
+
+    <div class="sumary">
+      <div class="sumary_top">
+        <div class="sumary_commerce oculto">
+          <img src="" alt="" />
+          <div>
+            <p><b>Comercio</b></p>
+            <p>Calificacion</p>
+            <p>Locacion</p>
+          </div>
+        </div>
+  
+        <div class="sumary_date">
+          <div>
+            <span class="material-symbols-outlined"> calendar_month</span>
+            <p>{{preview.semana}} {{preview.dia}} {{preview.mes}}</p>
+          </div>
+          <div>
+            <span class="material-symbols-outlined"> Schedule</span>
+            <p>{{preview.hora}}</p>
+          </div>
+        </div>
+        <div class="sumary_cart">
+          <div  *ngFor="let service of preview.service" class="sumary_cart_card">
+            <div class="cart_card_item">
+              <p>{{service.title}}</p>
+              <p>{{preview.profresional}}</p>
+            </div>
+            <div class="price">
+              <p>{{service.price}} COP</p>
+            </div>
+          </div>
+        </div>
+        <div class="sumary_total">
+          <p>Total</p>
+          <p>{{preview.total}} COP</p>
+        </div>
+        <div></div>
+      </div>
+      <div class="sumary_bottom">
+          <button (click)="next()">Continuar</button>
+        </div>
+    </div>
+  
+  </div>
+  

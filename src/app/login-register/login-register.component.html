@@ -1,0 +1,51 @@
+
+    <section class="wave-topside">
+        <div class="waveside wave1"></div>
+        <div class="waveside wave2"></div>
+        <div class="waveside wave3"></div>
+        <div class="waveside wave4"></div>
+    </section>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form [formGroup]="formRegister" (submit)="signIn()">
+                <h2>Registro</h2>
+                <input formControlName="name" type="text" placeholder="Nombre">
+                <input formControlName="email" type="email" placeholder="Correo electronico">
+                <input formControlName="password" type="password" placeholder="Contraseña" >
+                <button [disabled]="!formRegister">Registrarse</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form [formGroup]="formLogin" (submit)="login()">
+                <h2>Iniciar sesión</h2>
+                <input formControlName="email" type="email" placeholder="Correo electronico" required>
+                <input formControlName="password" type="password" placeholder="Contraseña" required>
+                <a href="/Forget-password">¿Olvidaste tu contraseña?</a>
+                <button [disabled]="!formLogin">Iniciar</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h2>¿Ya estas registrado?</h2>
+                    <p>¡Inicia sesión aquí!</p>
+                    <button class="hidden" id="login">Inicia sesión</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h2>¿Qué es PoliNet?</h2>
+                    <p>Polinet es una plataforma digital que ofrece mentoría para
+                         emprendedores y oportunidades de promoción para empresas. <br> <br> Conecta a emprendedores con mentores
+                          expertos en diferentes áreas empresariales para brindar orientación personalizada. <br> <br> Proporciona a las empresas un espacio para publicar contenido promocional y establecer comunicación directa con su audiencia.</p>
+                    <button class="hidden" id="register">Registrate aquí</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<section class="wave-bottomside">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+    <div class="wave wave4"></div>
+</section>

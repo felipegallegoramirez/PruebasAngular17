@@ -1,0 +1,141 @@
+<div class="modalApplyUserRecurrent" id="modalApply">
+    <div class="BoxModal">
+        <div class="closeDiv">
+            <i (click)="ModalClose('modalApply')" class="material-icons">close</i>
+        </div>
+        <h2>Postulación a Mentor</h2>
+        <p>¿Estas seguro en querer enviar un petición a PoliNet para cambiar tu rol a Mentor? <br>
+            Esto conlleva una mayor responsabilidad para ti, además uno de los requisitos es ser profesor en el
+            Politecnico Grancolombiano <br><br>
+            ¿Estas seguro? Sí es así, escribe tu celular para comunicarnos contigo y haz click en enviar solicitud.</p>
+        <form class="FormSign" [formGroup]="formApply" (submit)="Apply()">
+            <input formControlName="cellphone" type="number" max="9999999999">
+            <button [disabled]="!formApply">Enviar solicitud</button>
+        </form>
+    </div>
+</div>
+<div class="modalSubEnterprise" id="modalDeletePost">
+    <div class="BoxModal">
+        <div class="closeDiv">
+            <i (click)="ModalClose('modalDeletePost')" class="material-icons">close</i>
+        </div>
+        <h2>Eliminar publicación</h2>
+        <p>Selecciona cuál de tus publicaciones quieres eleminar</p>
+        <form class="FormSign" [formGroup]="formDelete" (submit)="deletePost()">
+            <select formControlName="delete_Id">
+                <option value="{{post._id}}" *ngFor="let post of posts">{{post.title}}</option>
+            </select>
+            <button [disabled]="!formDelete.valid">Eliminar</button>
+        </form>
+    </div>
+</div>
+<div class="modalSubEnterprise" id="modalSubEnter">
+    <div class="BoxModal">
+        <div class="closeDiv">
+            <i (click)="ModalClose('modalSubEnter')" class="material-icons">close</i>
+        </div>
+        <h2>Agregar emprendedor</h2>
+        <p>En esta pestaña puedes darle a un emprendedor los permisos
+            para ser un emprendedor en PoliNet. <br> ¡Sé discreto a la hora de inscribir
+            a alguien!
+        </p>
+        <form class="FormSign" [formGroup]="formPutRol" (submit)="putRol()">
+            <input formControlName="emailRol" type="text" placeholder="Correo electronico del emprendedor">
+            <button [disabled]="!formPutRol">Registrar</button>
+        </form>
+    </div>
+</div>
+<div class="body">
+    <section class="photo-description-follow">
+        <div class="Information">
+            <div class="photo-follow">
+                <img src="http://localhost:3000/public/images/{{user.files_id[0]}}" alt="">
+                <button id="followMeButton" class="followMe" (click)="Follow()">Seguir</button>
+            </div>
+            <div class="totalInfo">
+                <div class="whoInfo">
+                    <div class="Name-Followers">
+                        <h2>{{user.name}}</h2>
+                        <h3 id="Followers">Seguidores: {{user.followers.length}}</h3>
+                    </div>
+                    <div class="description">
+                        <p>{{user.description}}</p>
+                    </div>
+                </div>
+                <div class="extraInfo" id="extraInfo">
+                    <ol>
+                        <li>
+                            <p class="material-symbols-outlined">sort</p> {{user.category}}
+                        </li>
+                        <li>
+                            <p class="material-symbols-outlined">search</p> {{user.locate}}
+                        </li>
+                        <li>
+                            <p class="material-symbols-outlined">captive_portal</p><a class="linkPerfil"
+                                href="{{user.link}}">{{user.link}}</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <div class="EnterprisePriv ContentButton2" id="EnterprisePriv">
+                <a class="ButtonBasicA" href="http://localhost:3000/public/images/{{user.files_id[1]}}"
+                download="http://localhost:3000/public/images/{{user.files_id[1]}}">Hoja de vida</a>
+                <button class="ButtonBasic" id="editProfile">Editar perfil</button>
+                <button class="ButtonBasic" id="makePost">Crear post</button>
+                <button class="ButtonBasic" id="deletePost" (click)="ModalOpen('modalDeletePost')">Eliminar post</button>
+            </div>
+            <div class="EnterprisePub ContentButton" id="EnterprisePub">
+                <a class="ButtonBasicA" href="http://localhost:3000/public/images/{{user.files_id[1]}}"
+                    download="http://localhost:3000/public/images/{{user.files_id[1]}}">Hoja de vida</a>
+            </div>
+            <div class="MentorPriv ContentButton3" id="MentorPriv">
+                <a class="ButtonBasicA" href="http://localhost:3000/public/images/{{user.files_id[1]}}"
+                    download="http://localhost:3000/public/images/{{user.files_id[1]}}">Hoja de vida</a>
+                <button class="ButtonBasic" id="editProfile">Editar perfil</button>
+                <button class="ButtonBasic" (click)="ModalOpen('modalSubEnter')">Agregar empresario</button>
+            </div>
+            <div class="MentorPub ContentButton" id="MentorPub">
+                <a class="ButtonBasicA" href="http://localhost:3000/public/images/{{user.files_id[1]}}"
+                    download="http://localhost:3000/public/images/{{user.files_id[1]}}">Hoja de vida</a>
+            </div>
+            <div class="UserRecurrent ContentButton" id="UserRecurrent">
+                <button class="ButtonBasic" id="editProfile">Editar perfil</button>
+                <button class="ButtonBasic" (click)="ModalOpen('modalApply')">Postular</button>
+            </div>
+        </div>
+    </section>
+    <section class="Post-Zone">
+        <div class="UserRecurrent-Advertice Our-post" id="Advertice">
+            <div class="ContainerPost">
+                <div class="title-post">
+                    <h2>Aviso</h2>
+                </div>
+                <div class="description-post">
+                    <p>Por el momento esta cuenta es basica, si deseas convertirte en un mentor, selecciona postular,
+                        o por otra parte deseas agregar tu emprendimiento, ponte en contacto con un mentor :D</p>
+                </div>
+            </div>
+        </div>
+        <div class="Our-post">
+            <a href="/Postview/{{post._id}}" class="ContainerPost" *ngFor="let post of posts">
+                <div>
+                    <div class="Photo-perfil">
+                        <div>
+                            <img src="http://localhost:3000/public/images/{{user.files_id[0]}}" alt="">
+                        </div>
+                        <h3>{{post.creator_name}}</h3>
+                    </div>
+                </div>
+                <div class="img-post">
+                    <img id="ImagenLoad" src="http://localhost:3000/public/images/{{post.image}}" alt="">
+                </div>
+                <div class="description-post">
+                    <h2>{{post.title}}</h2>
+                    <p>{{post.description}}</p>
+                </div>
+            </a>
+        </div>
+    </section>
+</div>

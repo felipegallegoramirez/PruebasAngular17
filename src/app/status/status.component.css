@@ -1,0 +1,45 @@
+.background{
+    position: absolute;
+    z-index: 100000;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--w);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.info{
+    padding: 20px;
+    border-radius: 5px;
+    border: 3px solid var(--b);
+}
+
+.info>p{
+    font-size: 20px;
+}
+
+
+.active{
+    background-color: darkgreen;
+    color: var(--w);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.fall{
+    background-color: darkred;
+    color: var(--w);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.unknow{
+    background-color: darkgoldenrod;
+    color: var(--w);
+    border-radius: 10px;
+    padding: 5px;
+}

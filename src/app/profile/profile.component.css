@@ -1,0 +1,398 @@
+/*------------------------------*/
+.body{
+    width: 100%;
+    height: 100vh;
+    
+}
+.photo-description-follow{
+    margin: 30px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    border-left:5px solid var(--c2);
+    border-right:5px solid var(--c2);
+    border-radius: 10px;
+    width: 50%;
+    min-height: 300px;
+    height: fit-content;
+    padding: 5px 25px;
+    background-color: var(--sw);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.50));
+}
+/*-------Perfil-------*/
+.photo-follow{
+    width: 100%;
+    height: 179.9px;
+    display: flex;
+    box-sizing: border-box;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.photo-follow img{
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    width: 20%;
+    object-fit: cover;
+}
+.followMe{
+    display: none;
+    border-radius: 10px;
+    margin-top: 120px;
+    margin-right: 10px;
+    background-color: var(--c1);
+    border: 2px solid transparent;
+    color: var(--sw);
+    width: fit-content;
+    padding: 0 10px;
+    height: 40px;
+    cursor: pointer;
+    transition: all .2s linear;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.50));
+
+}
+.followMe:hover{
+    transition: all .1s ease;
+    background-color: var(--sw);
+    border: 2px solid var(--c2);
+    color: var(--c2);
+}
+.ButtonBasic{
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 0 10px;
+    background-color: var(--c1);
+    text-align: center;
+    border: 2px solid transparent;
+    color: var(--sw);
+    width: fit-content;
+    height: 40px;
+    cursor: pointer;
+    transition: all .2s linear;  
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.50));
+
+}
+
+.ButtonBasicA{
+    font-size: 17px;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 0 10px;
+    background-color: var(--c1);
+    text-align: center;
+    border: 2px solid transparent;
+    color: var(--sw);
+    width: fit-content;
+    height: 37px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all .2s linear; 
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.50));
+ 
+    
+}
+.ButtonBasicA:hover{
+    transition: all .1s ease;
+    background-color: var(--sw);
+    border: 2px solid var(--c2);
+    color: var(--c2);
+}
+button:hover{
+    transition: all .1s ease;
+    background-color: var(--sw);
+    border: 2px solid var(--c2);
+    color: var(--c2);
+    
+}
+.ContentButton{
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: grid;
+    justify-content: start;
+    gap: 3%;
+    grid-template-columns: auto auto;
+}
+.ContentButton3{
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: grid;
+    justify-content: start;
+    gap: 3%;
+    grid-template-columns: auto auto auto;
+}
+.ContentButton2{
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: grid;
+    justify-content: start;
+    gap: 3%;
+    grid-template-columns: auto auto auto auto;
+}
+
+.totalInfo{
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+}
+.whoInfo{
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.Name-Followers{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.Name-Followers h2{
+    width: 500px;
+    height: 24px;
+}
+.extraInfo{
+    
+    margin-bottom: 20px; 
+    overflow: hidden;
+    box-sizing: content-box;
+}
+.extraInfo ol{
+    height: fit-content;
+    padding-left: 25px;
+    margin: 0;
+    list-style: outside;
+    box-sizing: border-box;
+}
+.extraInfo ol li{
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    max-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.extraInfo ol li p{
+    margin-right: 10px;
+}
+.buttons{
+    margin-bottom: 25px;
+}
+.linkPerfil{
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*-----Post-----*/
+.Our-post a{
+    text-decoration: none;
+    color: var(--b);
+}
+
+.Our-post{
+    display: flex;
+    flex-direction: column;
+    box-sizing: content-box;
+    align-items: center;
+
+    margin: 0 auto;
+    height: fit-content;
+    width: 60%;
+    padding: 25px 0;
+}
+.ContainerPost{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-bottom: 40px;
+
+    border-left:5px solid var(--c2);
+    border-right:5px solid var(--c2);
+    transition: transform .6s ease;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 57%;
+    height: fit-content;
+    padding: 5px 25px;
+    background-color: var(--sw);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.50));
+}
+.ContainerPost:hover{
+    transform: scale3d(1.03,1.03,1.03);
+    transition: transform .6s ease;
+}
+.Photo-perfil{
+    width: 100%;
+    display: flex;
+    height: 52px;
+    align-items: center;
+}
+.Photo-perfil div {
+    width: 7%;
+
+}
+
+.Photo-perfil div img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1 ;
+}
+.Photo-perfil h3{
+    margin-left: 10px;
+    color: var(--c2);
+}
+.description-post h2, .title-post h2{
+    color: var(--c2);
+    font-size: 30px;
+}
+.img-post img{
+    width: 100%;
+    border-radius: 2%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    outline: none;
+}
+.img-post{
+    width: 100%;
+}
+.UserRecurrent-Advertice{
+    display: none;
+    
+}
+.UserRecurrent-Advertice div{
+    cursor: default;
+}
+
+/*---------Modal---------*/
+.modalSubEnterprise, .modalApplyUserRecurrent{
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.50);
+}
+.modalSubEnterprise h2, .modalApplyUserRecurrent h2{
+    color: var(--c2);
+    margin: 5px 0;
+} 
+.BoxModal p{
+    text-align: center;
+}
+input{
+    border-radius: 10px;
+    padding-left: 15px;
+    font-size: 13px;
+    height: 25px;
+    width: 250px;
+    margin-bottom: 10px;
+
+}
+.modalApplyUserRecurrent button{
+    border-radius: 10px;
+    background-color: var(--c1);
+    border: transparent 2px solid;
+    color: var(--sw);
+    width: 150px;
+    height: 37px;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.modalSubEnterprise button{
+    border-radius: 10px;
+    background-color: var(--c1);
+    border: transparent 2px solid;
+    color: var(--sw);
+    width: 100px;
+    height: 37px;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+.modalSubEnterprise button:hover, .modalApplyUserRecurrent button:hover {
+    transition: all .2s linear;
+    background-color: var(--sw);
+    border: 2px solid var(--c2);
+    color: var(--c2);
+    
+}
+.BoxModal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: var(--sw);
+    width: 40%;
+    height: fit-content;
+    padding: 25px;
+    border-left:5px solid var(--c2);
+    border-right:5px solid var(--c2);
+}
+.closeDiv{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+.FormSign{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.material-icons{
+    cursor: pointer;
+}
+.FormSign select{
+    width: 200px;
+    margin-bottom:20px;
+}
+.visto{
+    display: flex;
+}
+/*------Rols-------*/
+.EnterprisePriv, .EnterprisePub, .MentorPriv, .MentorPub,
+.UserRecurrent{
+    display: none;
+}
+
+/* -----notificaciones------- */
+::ng-deep .custom-snackbar1 {
+    border-radius: 2px !important;
+    outline: 2px solid var(--c1);
+    margin-bottom: 100px !important ;
+    --mdc-snackbar-container-color: var(--sw);
+    --mdc-snackbar-supporting-text-color: var(--b);
+}
+
+::ng-deep .custom-snackbar{
+    border-radius: 2px !important;
+    outline: 2px solid var(--r);
+    margin-bottom: 100px !important ;
+    --mdc-snackbar-container-color: var(--sw);
+    --mdc-snackbar-supporting-text-color: var(--b);
+}
+
+
+::ng-deep .custom-snackbar button, ::ng-deep .custom-snackbar1 button{
+    background-color: var(--c1) !important; 
+    color: var(--sw) !important;
+}

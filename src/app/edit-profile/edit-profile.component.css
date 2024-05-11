@@ -1,0 +1,103 @@
+
+/*-------Perfil-------*/
+.body{
+    width: 100%;
+    box-sizing: border-box;
+    height: 100vh;
+    margin-top: 20px;
+}
+.photo-description-follow{
+    margin: 10px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    border-left:5px solid var(--c2);
+    border-right:5px solid var(--c2);
+    border-radius: 10px;
+    width: 50%;
+    height: fit-content;
+    padding: 5px 25px;
+    background-color: var(--sw);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.50));
+}
+.photo-follow{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+    align-items: center;
+    
+}
+.photo-follow img{
+    cursor: pointer;
+    border-radius: 100%;
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+}
+.totalInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.whoInfo{
+    width: 100%;
+    height: 20%;
+    margin-bottom: 20px;
+}
+textarea{
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-left: 10px;
+    font-size: 15px;
+    resize: none;
+    width: 90%;
+}
+.extraInfo{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;  
+}
+h3{
+    color: var(--c2); 
+}
+.extraInfo input{
+    width: 60%;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 15px;
+    height: 35px;
+    margin-top: 8px;
+    margin-right: 20px;
+}
+.buttons{
+    margin-bottom: 25px;
+}
+.ButtonSend{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.ButtonSend button{
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 5px;
+    background-color: var(--c1);
+    border: none;
+    color: var(--sw);
+    width: 40%;
+    height: 37px;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+.ButtonSend button:hover{
+    border: 2px solid var(--c1);
+    transition: all .5s ease;
+    background-color: var(--sw);
+    color: var(--c1);
+}
+

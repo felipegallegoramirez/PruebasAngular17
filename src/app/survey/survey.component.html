@@ -1,0 +1,56 @@
+
+<div class="body">
+    <section class="asking">
+        <div class="titleSurvey">
+            <h2>Dilegencia esta encuestra sobre la mentoría con la que terminaste</h2>
+        </div>
+        <div class="whoInfo">
+            <div class="Name">
+                <h3> Bienvenido {{nameUser}}</h3>
+            </div>
+        </div>
+        <form id="enterprise" class="informationEnterprise" [formGroup]="formSurveyEnterprisetoTeacher" (submit)="sendFormSurveyEtoT()">
+            <div class="extraInfo" id="extraInfo">
+                <h3>1. ¿Cómo describirías tu experiencia general con la sesión de mentoría?</h3>
+                <textarea formControlName="description0" cols="30" rows="10" placeholder="Escribe tu opinión" required></textarea>
+                <h3>2. ¿Qué aspectos personales o profesionales del mentor te inspiraron más confianza o te ayudaron a
+                    sentirte más motivado para avanzar en tu emprendimiento?</h3>
+                <textarea formControlName="description1" cols="30" rows="10" placeholder="Escribe tu opinión" required></textarea>
+                <h3>3. ¿Hubo algún consejo o recomendación específica del mentor que te resultara especialmente útil o
+                    relevante para tu situación como emprendedor principiante?</h3>
+                <textarea formControlName="description2" cols="30" rows="10" placeholder="Escribe tu opinión" required></textarea>
+                <h3>4. ¿Qué aspectos específicos de la mentoría te resultaron más útiles o relevantes para tu situación
+                    como emprendedor principiante?</h3>
+                <textarea formControlName="description3" cols="30" rows="10" placeholder="Escribe tu opinión" required></textarea>
+                <h3>5. En cuanto a la aplicación utilizada para la conexión con el mentor, ¿fue fácil de usar y
+                    entender? ¿Experimentaste algún problema técnico durante la sesión?</h3>
+                <textarea formControlName="description4" cols="30" rows="10" placeholder="Escribe tu opinión" required></textarea>
+            </div>
+            <div class="ButtonSend">
+                <button  mat-stroked-button color="accent" [disabled]="!formSurveyEnterprisetoTeacher" >Enviar formulario</button>
+            </div>
+        </form>
+        <form id="teacher" class="informationTeacher" [formGroup]="formSurveyTeachertoEnterprise" (submit)="sendFormSurveyTtoE()">
+            <div class="extraInfo" id="extraInfo">
+                <h3>1. ¿Cómo describirías la preparación y el nivel de participación del emprendedor durante la sesión
+                    de mentoría?</h3>
+                <textarea formControlName="description0" cols="30" rows="10" placeholder="Escribe tu opinión" required></textarea>
+                <h3>2. ¿El emprendedor demostró una comprensión clara de sus desafíos empresariales y objetivos? ¿Fue
+                    capaz de articularlos de manera efectiva?</h3>
+                <textarea formControlName="description1" cols="30" rows="10" placeholder="Escribe tu opinión" required></textarea>
+                <h3>3. ¿Observaste una actitud receptiva por parte del emprendedor hacia los consejos y sugerencias
+                    proporcionados por el mentor?</h3>
+                <textarea formControlName="description2" cols="30" rows="10" placeholder="Escribe tu opinión" required></textarea>
+                <h3>4. ¿El emprendedor mostró habilidades de resolución de problemas y pensamiento creativo al abordar
+                    los desafíos planteados durante la sesión?</h3>
+                <textarea formControlName="description3" cols="30" rows="10" placeholder="Escribe tu opinión" required></textarea>
+                <h3>5. En cuanto a la aplicación utilizada para la conexión con el emprendedor ¿fue fácil de usar y
+                    entender? ¿Experimentaste algún problema técnico durante la sesión?</h3>
+                <textarea formControlName="description4" cols="30" rows="10" placeholder="Escribe tu opinión" required></textarea>
+            </div>
+            <div class="ButtonSend">
+                <button [disabled]="!formSurveyTeachertoEnterprise.valid || !formSurveyTeachertoEnterprise.touched">Enviar formulario</button>
+            </div>
+        </form>
+    </section>
+</div>

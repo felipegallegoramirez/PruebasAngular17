@@ -1,0 +1,143 @@
+<div class="ModalViewAccept" id="ModalViewAccept">
+    <div class="BoxModal">
+        <div class="closeDiv">
+            <i (click)="ModalClose('ModalViewAccept')" class="material-icons">close</i>
+        </div>
+        <h2>Detalles</h2>
+        
+        <h4>¿Estas seguro de aceptar la postulación de {{requestSelected.name}}?</h4>
+        <p class="modalAcceptP">Recuerda que aceptar la postulación hace que la persona cambie de rol a mentor y tendra acceso a opciones diferentes y de mayor acceso. Ten en cuenta eso, recuerda revisar si hace parte del Politécnico Grancolombiano </p>
+        <p>Telefono: {{requestSelected.cellphone}}</p>
+        <div class="ContentButton2">
+            <button class="ButtonBasic" (click)="acceptRequest()">Aceptar postulación</button>
+            <button class="ButtonBasicR" (click)="denyRequest()">Cancelar postulación</button>
+        </div>
+    </div>
+</div>
+<div class="ModalViewSurvey" id="ModalViewSurvey">
+    <div class="BoxModal">
+        <div class="closeDiv">
+            <i (click)="ModalClose('ModalViewSurvey')" class="material-icons">close</i>
+        </div>
+        <h2>Detalles</h2>
+        <div [ngSwitch]="surveySelected.title">
+            <div *ngSwitchCase="teacherCase" class="moreDetailsTeacher">
+                <h3>Encuesta {{surveySelected.title}}</h3>
+                <p>De: {{surveySelected.responsible.name}}</p>
+                <p>Hacia: {{surveySelected.respondent.name}}</p>
+                <h4>1. ¿Cómo describirías la preparación y el nivel de participación del emprendedor durante la sesión
+                    de mentoría?</h4>
+                <p>{{surveySelected.answers[0]}}</p>
+                <h4>2. ¿El emprendedor demostró una comprensión clara de sus desafíos empresariales y objetivos? ¿Fue
+                    capaz de articularlos de manera efectiva?</h4>
+                <p>{{surveySelected.answers[1]}}</p>
+                <h4>3. ¿Observaste una actitud receptiva por parte del emprendedor hacia los consejos y sugerencias
+                    proporcionados por el mentor?</h4>
+                <p>{{surveySelected.answers[2]}}</p>
+                <h4>4. ¿El emprendedor mostró habilidades de resolución de problemas y pensamiento creativo al abordar
+                    los desafíos planteados durante la sesión?</h4>
+                <p>{{surveySelected.answers[3]}}</p>
+                <h4>5. En cuanto a la aplicación utilizada para la conexión con el emprendedor ¿fue fácil de usar y
+                    entender? ¿Experimentaste algún problema técnico durante la sesión?</h4>
+                <p>{{surveySelected.answers[4]}}</p>
+            </div>
+            <div *ngSwitchCase="enterpriseCase" class="moreDetailsEnterprise">
+                <h3>Encuesta {{surveySelected.title}}</h3>
+                <p>De: {{surveySelected.responsible.name}}</p>
+                <p>Hacia: {{surveySelected.respondent.name}}</p>
+                <h4>1. ¿Cómo describirías tu experiencia general con la sesión de mentoría?</h4>
+                <p>{{surveySelected.answers[0]}}</p>
+                <h4>2. ¿Qué aspectos personales o profesionales del mentor te inspiraron más confianza o te ayudaron a
+                    sentirte más motivado para avanzar en tu emprendimiento?</h4>
+                <p>{{surveySelected.answers[1]}}</p>
+                <h4>3. ¿Hubo algún consejo o recomendación específica del mentor que te resultara especialmente útil o
+                    relevante para tu situación como emprendedor principiante?</h4>
+                <p>{{surveySelected.answers[2]}}</p>
+                <h4>4. ¿Qué aspectos específicos de la mentoría te resultaron más útiles o relevantes para tu situación
+                    como emprendedor principiante?</h4>
+                <p>{{surveySelected.answers[3]}}</p>
+                <h4>5. En cuanto a la aplicación utilizada para la conexión con el mentor, ¿fue fácil de usar y
+                    entender? ¿Experimentaste algún problema técnico durante la sesión?</h4>
+                <p>{{surveySelected.answers[4]}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ModalDeleteUser" id="ModalDeleteUser">
+    <div class="BoxModal">
+        <div class="closeDiv">
+            <i (click)="ModalClose('ModalDeleteUser')" class="material-icons">close</i>
+        </div>
+        <h2>Detalles</h2>
+        <img src="http://localhost:3000/public/images/{{userSelected.files_id[0]}}" alt="">
+        <div class="moreDetails">
+            <h3>Usuario: {{userSelected.name}}</h3>
+            <p>Rol: {{userSelected.rol}}</p>
+            <p>Correo electronico: {{userSelected.email}}</p>
+            <p>Cantidad de post subidos: {{userSelected.post_id.length}}</p>
+            <p>Seguidores: {{userSelected.followers.length}}</p>
+            <p>Descripción: {{userSelected.description}}</p>
+            <p>Dirección: {{userSelected.locate}}</p>
+            <p>Categoría: {{userSelected.category}}</p>
+            <p>Enlace principal: <a href="{{userSelected.link}}">{{userSelected.link}}</a></p>
+        </div>
+        <button class="ButtonBasicR" (click)="deleteUser()">Eliminar</button>
+    </div>
+</div>
+<div class="body">
+    <section class="photo-description-follow">
+        <div class="Information">
+            <div class="totalInfo">
+                <h2 class="title-totalinfo">Vista de administrador</h2>
+                <div class="whoInfo">
+                    <div class="Name">
+                        <h2>{{userLogged.name}}</h2>
+                    </div>
+                    <div class="description">
+                        <p>Buen día {{userLogged.name}}, estas desde la ventana de administrador <br>
+                            Desde esta vista puedes:</p>
+                        <ul>
+                            <li>Aceptar postulaciones a Mentor</li>
+                            <li>Ver encuestas</li>
+                            <li>Eliminar cuentas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <div class="ContentButton" id="EnterprisePriv">
+                <button class="ButtonBasic" (click)="Hide(0)">Postulaciones</button>
+                <button class="ButtonBasic" (click)="Hide(1)">Encuestas</button>
+                <button class="ButtonBasic" (click)="Hide(2)">Eliminar usuarios</button>
+            </div>
+        </div>
+    </section>
+    <section class="View" *ngIf="contadorMostrar==0" >
+        <div class="boxView" *ngFor="let request of requests">
+            <h3>Postulación a Mentor</h3>
+            <p>De: {{request.name}} </p>
+            <p>Telefono: {{request.cellphone}}</p>
+            <button class="ButtonBasic" (click)="ModalAcceptRequest('ModalViewAccept',request._id)">Ver detalles</button>
+        </div>
+    </section>
+    <section class="View" *ngIf="contadorMostrar==1">
+        <ng-container *ngFor="let survey of surveys">
+            <div class="boxView" *ngIf="survey.state">
+                <h3>{{survey.title}}</h3>
+                <p>De: {{survey.responsible.name}}</p>
+                <p>Hacía: {{survey.respondent.name}}</p>
+                <button class="ButtonBasic" (click)="ModalOpenSurvey('ModalViewSurvey', survey._id)">Ver detalles</button>
+            </div>
+        </ng-container>
+
+    </section>
+    <section class="View" *ngIf="contadorMostrar==2">
+        <div class="boxView" *ngFor="let user of users">
+            <h3>{{user.name}}</h3>
+            <p>Correo electronico: {{user.email}}</p>
+            <p>Rol: {{user.rol}}</p>
+            <button class="ButtonBasic" (click)="ModalOpenUser('ModalDeleteUser',user._id)">Ver detalles</button>
+        </div>
+    </section>
+</div>

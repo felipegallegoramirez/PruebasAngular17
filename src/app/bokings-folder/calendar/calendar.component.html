@@ -1,0 +1,15 @@
+<div class="calendar">
+    <div class="calendar__row">
+      <p>Horario</p>
+      <p *ngFor="let day of data">{{day.dia}} {{day.dia2}}</p>
+    </div>
+    <div class="colums">
+      <div class="calendar__colum">
+        <p *ngFor="let hour of hours">{{hour}}:00</p>
+      </div>
+      <div *ngFor="let day of data" class="calendar__day">
+        <div *ngFor="let hour of hours" class="calendar__hour">
+            <p></p>
+        </div>  
+      </div>
+    </div>

@@ -1,0 +1,77 @@
+.calendar{
+    outline: 1px solid var(--gi);
+    overflow-y: hidden;
+    overflow-x:scroll;
+    margin: 0px;
+    padding: 20px 20px;
+    height: calc(100vh - 40px);
+    vertical-align: top;
+    background-color: var(--w);
+    margin-left: calc(15% - 150px);
+
+  }
+  .calendar__row{
+    display: flex;
+    width: max-content;
+
+  }
+
+  .calendar__row>p{
+    width: calc(150px);
+    margin: 0px;
+    height: 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--gi);
+    border-right: 1px solid var(--gi);
+    text-align: center;
+    box-sizing: border-box;
+    
+  }
+  .calendar__row>p:first-child{
+    width: 100px;
+  }
+
+  .colums{
+    display: flex;
+}
+  .calendar__colum{
+    display: inline-block;
+
+  }
+  .calendar__colum{
+    display: inline-block;
+    width: 100px;
+  }
+  .calendar__colum>p{
+    margin: 0px;
+    padding: 3px 0px;
+    color: var(--gi);
+    height: 23px;
+    margin: 0px;
+    border-bottom: 1px solid var(--gi);
+    border-right: 1px solid var(--gi);
+    width: 99px;
+
+  }
+
+  .calendar__day{
+    display: inline-block;
+    width: 150px;
+  }
+  .calendar__hour>p{
+    border-bottom: 1px solid var(--gi);
+    border-right: 1px solid var(--gi);
+    margin: 0px;
+    height: 30px;
+    box-sizing: border-box;
+    width: 150px;
+    overflow-x: hidden;
+  }
+
+  .ocupado{
+    background-color: var(--c1);
+  }
+
+  .calendar__day:last-child .calendar__hour>p,  .calendar__row>p:last-child{
+    border-right: none;
+  }

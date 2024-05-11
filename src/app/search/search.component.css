@@ -1,0 +1,125 @@
+/*-------------------Zona de posteo-------------------*/
+.body-search{
+    display: flex;
+    flex-direction: column;
+    box-sizing: content-box;
+    align-items: center;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: fit-content;
+    width: 100%;
+    padding: 25px 0;
+}
+.inputSearch{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+
+    box-sizing: content-box;
+    margin-bottom: 2%;
+}
+.inputSearch input{
+    border: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 10px;
+    font-size: 15px;
+    width: 100%;
+    height: 30px;
+    border: 2px solid transparent;
+    
+}
+.inputSearch input:focus{
+    border: 2px solid var(--c1);
+    outline: none;
+    
+}
+button{
+    border: none;
+    width: 4%;
+    border: 2px solid transparent;
+    border-top-right-radius:10px ;
+    border-bottom-right-radius:10px ;
+    padding: 2px;
+    box-sizing: content-box;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .1s ease;
+    background-color: var(--c1);
+}
+button:hover{
+    border: 2px solid greenyellow;
+    transition: all .1s ease;
+    background-color: greenyellow;
+    color: var(--c1);
+}
+button img{
+    height: 20px;
+    width: 20px;
+    object-fit: cover;
+}
+.ResultSearch{
+    width: 70%;
+    box-sizing: content-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+}
+.ContainerProfile{
+    height: 99px;
+    width: calc(350px-25px);
+    overflow: hidden;
+    box-sizing: content-box;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    
+    background-color: var(--sw);
+    border-top:2px solid var(--c2) ;
+    border-bottom:2px solid var(--c2);
+    border-left:6px solid var(--c2);
+    border-right:6px solid var(--c2);
+    transition: transform .6s ease;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 0 25px;
+}
+.ResultSearch img{
+    width: 80px;
+    margin-right: 20px;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 2px solid var(--c1);
+}
+.ContainerProfile:hover{
+    transform: scale3d(1.03,1.03,1.03);
+    transition: transform .6s ease;
+}
+.nameProfile{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: center;
+    
+}
+.nameP{
+    display: block;
+    margin: 0;
+    color: var(--c1);
+}
+.nameProfile p{
+    width:  210px;
+    text-overflow: ellipsis;
+    height: 25.75px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+a{
+    text-decoration: none;
+    color: var(--b);
+}
+.filter{
+    display: none;
+}

@@ -1,0 +1,38 @@
+
+<div class="body">
+    <section class="photo-description-follow">
+        <form class="Information" [formGroup]="formUpdate" (submit)="update()">
+            <div class="img-post photo-follow">
+                <h3>Cambiar imagen de perfil</h3>
+                <img class="DefaultImage" (click)="photoInput.click()" [src]="photoSelected">
+                <input  formControlName="filePhotoProfile" #photoInput (change)="onPhotoSelected($event)" id="foto" type="file" accept="image/png, image/png" style="visibility: hidden;"/>
+            </div>
+            
+            <div class="totalInfo">
+                <div class="whoInfo">
+                    <div class="Name">
+                        <h2>{{userGets.name}}</h2>
+                    </div>
+                    <div class="description">
+                        <textarea id="textareaDescription" formControlName="description" cols="30" rows="10" placeholder="{{userGets.description}}"></textarea>
+                    </div>
+                </div>
+                <div id="fileUpdate">
+                    <h3>Aquí puedes cargar tu hoja de vida como empresa o mentor</h3>
+                    <input id="pdf" formControlName="filePdf" type="file" accept="application/pdf"/>
+                </div>
+                <div class="extraInfo" id="extraInfo">
+                    <h3>Escribe una categoria a la que más se apegue tu negocio</h3>
+                    <input formControlName="category" type="text" placeholder="{{userGets.category}}">
+                    <h3>Escribe la dirección de tu negocio si tiene una</h3>
+                    <input formControlName="locate" type="text" placeholder="{{userGets.locate}}">
+                    <h3>Pega el enlace principal de tu negocio ya sea instagram o whatsApp, etc.</h3>
+                    <input formControlName="link" type="text" placeholder="{{userGets.link}}">
+                </div>
+            </div>
+            <div class="ButtonSend">
+                <button [disabled]="!formUpdate.valid">Actualizar información</button>
+            </div>
+        </form>
+    </section>
+</div>

@@ -1,0 +1,107 @@
+.router{
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    
+}
+.Background{
+    position: fixed;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}
+/*-------------------Navegador lateral------------------*/
+.SideBar{
+    box-sizing: border-box;
+    overflow: hidden;
+    position: fixed;
+    z-index: 500;
+    padding: 20px;
+    top: 0;
+    border-right:5px solid var(--c2);
+    background-color: var(--sw);
+    
+    width: 15%;
+    height: 100vh;
+    transition: transform .5s ease;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.40));
+}
+
+.Logotype-button{
+    display: flex;
+    box-sizing: border-box;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+}
+.Logotype h2{
+    color: var(--c2);
+}
+.buttonClose img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+}
+.buttonClose{
+    width: 39px;
+    border: none;
+    background-color: var(--sw);
+    cursor: pointer;
+}
+.buttonClose img:hover{
+    filter: hue-rotate(190deg);
+}
+.buttons{
+    display: flex;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex-flow: column;
+    height: 85%;
+    width: 100%;
+    
+}
+.ButtonClose{
+    cursor: pointer;
+}
+.iconPerfil img, .iconMeeting img, .iconConfig img, .iconHome img{
+    width: 100%;
+    height: 100%;
+  
+}
+
+.iconPerfil, .iconMeeting, .iconConfig, .iconHome{
+    width: 35px;
+    margin-right: 20px;
+}
+.button1-perfil, .button2-meetings, .button3-home, .button4-configs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%
+}
+.ButtonClose{
+    display: none;
+}
+.ButtonLog-in{
+    display: block;
+}
+.ButtonWord a{
+    font-size: 18px;
+    font-weight: 500;
+    transition: color .4s linear;
+}
+.ButtonWord:hover{
+    color: var(--c1);
+}
+a:link, a:hover, a:visited, a:active, a{
+    color:black;
+    text-decoration: none;
+}
+#LinkPriv{
+    display: none;
+}

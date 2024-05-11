@@ -1,0 +1,52 @@
+<img class="Background" src="./../../assets/fondo.PNG" alt="">
+<div class="SideBar" id="SideBar">
+    <div class="Logotype-button">
+        <div class="Logotype">
+            <h2>PoliNet</h2>    
+        </div>
+        <button class="buttonClose" (click)="CloseSideBar()">
+            <img id="Arrow" src="../../assets/Arrow.svg" alt="">
+        </button>
+    </div> 
+    <div class="buttons">
+        
+        <div class="button1-perfil">
+            <div class="iconPerfil">
+                <img src="./../../assets/Perfil.svg" alt="">
+            </div>
+            <div class="ButtonWord" id="ButtonWord"><a id="LinkPub" class="LinksWord" href="/Profile/{{idUser}}">Perfil</a><a id="LinkPriv" class="LinksWord" href="/admon/{{idUser}}">Perfil</a></div>
+        </div>
+        <div class="button3-home">
+            <div class="iconHome"><img src="./../assets/searchIconNavbar.png" alt=""></div>
+            <div class="ButtonWord" id="ButtonWord"><a class="LinksWord" href="/search">Search</a></div>
+        </div>
+        <div class="button3-home">
+            <div class="iconHome"><img src="./../../assets/Home.svg" alt=""></div>
+            <div class="ButtonWord" id="ButtonWord"><a class="LinksWord" href="/Home">Home</a></div>
+        </div>
+        <div class="button2-meetings" id="button2-meetings">
+            <div class="iconMeeting"><img src="./../../assets/Meeting.svg" alt=""></div>
+            <div class="ButtonWord" id="ButtonWord"><a class="LinksWord" href="/Services">Reunion</a></div>
+        </div>
+        <div class="button2-meetings" id="button3-hour">
+            <div class="iconMeeting"><img src="./../assets/hourIcon.png" alt=""></div>
+            <div class="ButtonWord" id="ButtonWord"><a class="LinksWord" href="/AdmonTime">Horario</a></div>
+        </div>
+        <div class="button2-meetings" id="button4-calendar">
+            <div class="iconMeeting"><img src="./../assets/calendarIcon.png" alt=""></div>
+            <div class="ButtonWord" id="ButtonWord"><a class="LinksWord" href="/calendar">Agenda</a></div>
+        </div>
+        
+    </div>
+    <div class="Config">
+        <div class="Line"></div>
+        <div class="button4-configs">
+            <div class="iconConfig"><img src="./../assets/UserIcon.png " alt=""></div>
+            <div class="ButtonWord" id="ButtonWord">
+                <a id="Log-in" class="ButtonLog-in LinksWord" href="./Login">Iniciar Sesión</a>
+                <a id="Sign-out" class="ButtonClose LinksWord">Cerrar sesión</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="router"><router-outlet/></div>
