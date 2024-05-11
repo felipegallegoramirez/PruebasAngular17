@@ -113,7 +113,7 @@ export class EditProfileComponent implements OnInit {
         if (res) {
           window.alert("Actualizados los datos")
           this.formUpdate.reset();
-          window.location.replace("http://localhost:4200/Profile/" + this.userGets._id)
+          window.location.replace(environment.baseUrl+"Profile/" + this.userGets._id)
         } else {
           window.alert("No ha sido posible actualizar los datos")
         }
