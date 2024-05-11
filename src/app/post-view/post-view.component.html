@@ -18,7 +18,7 @@
                 <div>
                     <img src="http://localhost:3000/public/images/{{post.creator_image}}" alt="">
                 </div>
-                <a href="/Profile/{{post.creator_id}}">{{post.creator_name}}</a>
+                <a href="/#/Profile/{{post.creator_id}}">{{post.creator_name}}</a>
             </div>
             <div class="titlePost">
                 <h2>{{post.title}}</h2>
@@ -43,7 +43,7 @@
                             <div>
                                 <img src="http://localhost:3000/public/images/{{comment.image}}" alt="">
                             </div>
-                            <a href="./Profile/{{comment._id}}">{{comment.name}}</a>
+                            <a href="/#/Profile/{{comment._id}}">{{comment.name}}</a>
                         </div>
                         <p class="descriptionComment">{{comment.description}}</p>
                     </div>
