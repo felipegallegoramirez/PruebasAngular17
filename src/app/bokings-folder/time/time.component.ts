@@ -312,7 +312,7 @@ export class TimeComponent implements OnInit {
         this.preview.dia=x?.dia+""||""
         this.preview.semana=this.dayComplete(x?.dia3||333)
         localStorage.setItem("preview",JSON.stringify(this.preview))
-        window.location.replace("http://localhost:4200/confirm");
+        window.location.replace(environment.baseUrl+"confirm");
       })
     }else{
       this.noti.open('Por favor, seleccione una hora', 'Cerrar', {

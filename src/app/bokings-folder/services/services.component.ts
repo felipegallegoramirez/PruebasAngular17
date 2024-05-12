@@ -57,7 +57,7 @@ export class ServicesComponent implements OnInit {
       this.preview.total=x?.price+""||""
       localStorage.setItem("preview",JSON.stringify(this.preview))
       localStorage.setItem("service_id",this.selected)
-      window.location.replace("http://localhost:4200/Profesional");
+      window.location.replace(environment.baseUrl+"Profesional");
     }else{
         this.noti.open('Por favor, seleccione un servicio', 'Cerrar', {
           panelClass: ["custom-snackbar"],

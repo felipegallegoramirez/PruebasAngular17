@@ -65,7 +65,7 @@ export class ProfesionalComponent implements OnInit {
       this.preview.profresional=x?.name||""
       localStorage.setItem("Profresional_id",this.selected)
       localStorage.setItem("preview",JSON.stringify(this.preview))
-      window.location.replace("http://localhost:4200/Time");
+      window.location.replace(environment.baseUrl+"Time");
     }else{
       this.noti.open('Por favor, seleccione un profesional', 'Cerrar', {
         panelClass: ["custom-snackbar"],

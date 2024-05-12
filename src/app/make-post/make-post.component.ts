@@ -131,7 +131,7 @@ export class MakePostComponent implements OnInit{
         if(res){
           this.formMakePost.reset();
           window.alert("Has publicado este post")
-          window.location.replace("http://localhost:4200/Profile/"+this.idsession);
+          window.location.replace(environment.baseUrl+"Profile/"+this.idsession);
         }else{
           window.alert("No se pudo realizar")
         }
@@ -184,7 +184,7 @@ export class MakePostComponent implements OnInit{
         if(res){
           this.formMakePost.reset();
           window.alert("Has publicado este post")
-          window.location.replace("http://localhost:4200/Profile/"+this.idsession);
+          window.location.replace(environment.baseUrl+"Profile/"+this.idsession);
         }else{
           window.alert("No se pudo realizar")
         }

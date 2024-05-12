@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { environment } from '../environments/environments';
+import { StatusService } from '../services/status.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,12 @@ export class AppComponent implements OnInit {
   idUser: String = "";
   contador:number = 0;
   rol: String = "";
+  stat:string='Desconocido'
+  time:number=0
+
+  constructor( private status: StatusService ){
+
+  }
 
   ngOnInit(): void{
     this.HideButton();
@@ -20,6 +27,29 @@ export class AppComponent implements OnInit {
     this.CheckUsers();
   }
 
+  modalStatus(){
+    const start = new Date();
+    var element = document.getElementById("status");
+    this.status.get().subscribe(res=>{
+      this.stat='Activo'
+      if(element){
+        element.classList.remove("unknow");
+        element.classList.add("active");
+      }
+      const end = new Date();
+    this.time=end.getTime() - start.getTime();
+
+    },err=>{
+      this.stat='Error'
+      if(element){
+      element.classList.remove("unknow");
+      element.classList.add("fall");
+      }
+      const end = new Date();
+      this.time=end.getTime() - start.getTime();
+    })
+  }
+  
   navbarHide(){
     let box = document.getElementById('SideBar');
     let x = localStorage.getItem('User')
