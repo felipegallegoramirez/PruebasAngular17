@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    baseUrl: "http://localhost:4200/",
+    baseUrl: "https://polinet.vercel.app/#/",
     backend: "https://polinet.onrender.com/"
   };
