@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
- 
+
 import { FormControl, ReactiveFormsModule, FormGroup, Validator, Validators } from '@angular/forms';
 import { User } from '../../models/user';
 import { Post } from '../../models/post';
@@ -19,21 +19,21 @@ import { environment } from '../../environments/environments';
 })
 export class ProfileComponent implements OnInit {
   idLocalStorage: string = "";
-  rol:string = ""; 
+  rol: string = "";
   nameLocalStorgae = "";
-  idsession:string = "";
+  idsession: string = "";
   user: User = new User();
   userLogged: User = new User();
   posts: Post[] = [];
-  
-  count:number = 0;
+
+  count: number = 0;
 
 
   constructor(private noti: MatSnackBar,
     private requestService: RequestService,
-    private postService: PostService, 
-    private userService: UserService, 
-    private activateRoute:ActivatedRoute){
+    private postService: PostService,
+    private userService: UserService,
+    private activateRoute: ActivatedRoute) {
 
   }
 
@@ -43,12 +43,12 @@ export class ProfileComponent implements OnInit {
     this.gotoEdit("editProfile");
     this.ocultarSiSinSrc("ImagenLoad");
 
-    
+
 
     let followMeButton = document.getElementById('followMeButton');
     let x = localStorage.getItem('User');
 
-    if(x!=null){
+    if (x != null) {
       let UserLocalStorage = JSON.parse(x);
       this.rol = UserLocalStorage.rol;
       this.idLocalStorage = UserLocalStorage.id;
@@ -61,15 +61,15 @@ export class ProfileComponent implements OnInit {
 
       this.userService.getUser(this.idsession).subscribe((res) => {
         this.user = res as User;
-        
+
         this.CheckUsers(this.idsession);
-        if(this.user.followers.findIndex(x => this.idLocalStorage == x) != -1){
+        if (this.user.followers.findIndex(x => this.idLocalStorage == x) != -1) {
           this.count = 1;
           followMeButton!.style.backgroundColor = "var(--r)";
           followMeButton!.innerHTML = "Dejar de seguir";
         }
       });
-      
+
       this.postService.postsByUser(this.idsession).subscribe((res) => {
         this.posts = res as Post[]
         this.posts.reverse();
@@ -78,7 +78,7 @@ export class ProfileComponent implements OnInit {
 
     this.userService.getUser(this.idLocalStorage).subscribe((res) => {
       this.userLogged = res as User;
-      if(this.userLogged.follows.findIndex(y => this.idLocalStorage == y._id) != -1){
+      if (this.userLogged.follows.findIndex(y => this.idLocalStorage == y._id) != -1) {
       }
     })
     /** fin de función */
@@ -87,10 +87,10 @@ export class ProfileComponent implements OnInit {
   /** funcion para cambiar rol */
 
   formPutRol = new FormGroup({
-    emailRol: new FormControl('',[Validators.required])
+    emailRol: new FormControl('', [Validators.required])
   })
 
-  putRol(){
+  putRol() {
     if (this.formPutRol.invalid) {
 
       this.noti.open('Por favor, completa todos los campos obligatorios', 'Cerrar', {
@@ -122,24 +122,24 @@ export class ProfileComponent implements OnInit {
   }
   /** fin funcion */
 
-      
+
   /**funcion para detectar si esta logeado */
-  authSession():void{
+  authSession(): void {
     let x = localStorage.getItem('User');
 
-    if(x == null){
-      window.location.replace(environment.baseUrl+'Login')
+    if (x == null) {
+      window.location.replace(environment.baseUrl + 'Login')
     }
   }
   /**  fin función */
-  
-  /** función eliminar post */  
+
+  /** función eliminar post */
 
   formDelete = new FormGroup({
-    delete_Id: new FormControl('',[])
+    delete_Id: new FormControl('', [])
   })
-  
-  deletePost(){
+
+  deletePost() {
     let delete_Id = this.formDelete.value.delete_Id || "";
 
     let _id = this.user._id;
@@ -160,8 +160,8 @@ export class ProfileComponent implements OnInit {
     let link = this.user.link;
     let followers: string[] = this.user.followers;
     let follows: Person[] = this.user.follows;
-    
-    
+
+
     const user: User = {
       _id: _id,
       name: name,
@@ -184,39 +184,39 @@ export class ProfileComponent implements OnInit {
     };
 
     let indexID = post_id.indexOf(delete_Id)
-    post_id.splice(indexID,1);
+    post_id.splice(indexID, 1);
     this.userService.putUser(user, _id).subscribe((res) => {
       this.postService.deletePost(delete_Id).subscribe((res) => {
-        if(res){
+        if (res) {
           window.alert('Se ha eliminado el post');
-          window.location.replace(environment.baseUrl+'Profile/'+this.idsession)
-        }else{
+          window.location.replace(environment.baseUrl + 'Profile/' + this.idsession)
+        } else {
           window.alert('No se ha podido eliminar el post')
         }
       })
     })
-    
+
   }
 
   /** fin función */
 
   /* Ocultar las imagenes sin path determinado  */
-  ocultarSiSinSrc(idImagen:string):void {
+  ocultarSiSinSrc(idImagen: string): void {
     let imgElements = document.querySelectorAll(`#${idImagen}`) as NodeListOf<HTMLImageElement>;
     imgElements.forEach(imgElement => {
       let url = imgElement.currentSrc;
 
-      if(url === ""){
-          imgElement.style.display = "none";
-      }else{
-          console.log("La imagen tiene una URL válida");
+      if (url === "") {
+        imgElement.style.display = "none";
+      } else {
+        console.log("La imagen tiene una URL válida");
       }
     });
   }
   /* Fin función */
 
   /* Verificar el tipo de usuario  */
-  CheckUsers(idsession:String){
+  CheckUsers(idsession: String) {
     let followMeButton = document.getElementById('followMeButton');
     let buttonEnterprisePriv = document.getElementById('EnterprisePriv');
     let buttonEnterprisePub = document.getElementById('EnterprisePub');
@@ -226,47 +226,52 @@ export class ProfileComponent implements OnInit {
     let Advertice = document.getElementById('Advertice');
     let followers = document.getElementById('Followers');
     let extraInfo = document.getElementById('extraInfo');
-    
-   
-      if(idsession==this.idLocalStorage){
-       switch(this.rol){
+    UserRecurrent!.style.display = 'none';
+    buttonEnterprisePub!.style.display = 'none';
+    buttonEnterprisePriv!.style.display = 'none';
+    MentorPriv!.style.display = 'none';
+    MentorPub!.style.display = 'none';
+    followMeButton!.style.display = 'none';
+
+    if (idsession == this.idLocalStorage) {
+      switch (this.rol) {
         case "userRecurrent":
           extraInfo!.style.display = 'none';
           Advertice!.style.display = 'flex';
           UserRecurrent!.style.display = 'grid';
           followers!.style.display = 'none';
-        break;
+          break;
         case "enterprise":
           buttonEnterprisePriv!.style.display = 'grid';
-        break;
+          break;
         case "teacher":
           MentorPriv!.style.display = 'grid';
-        break;
-       }
-      }else{
-        console.log(this.user.rol)
-        switch(this.user.rol){
-          case "userRecurrent":
-            followers!.style.display = 'none';
-            extraInfo!.style.display = 'none';
-            followers!.style.display = 'none';
           break;
-          case "teacher":
-            followMeButton!.style.display = 'block';
-            MentorPub!.style.display = 'grid'; 
-          break;
-          case "enterprise":
-            buttonEnterprisePub!.style.display = 'grid';
-            followMeButton!.style.display = 'block';
-          break;
-          }
       }
+    } else {
+      console.log(this.user.rol)
+      switch (this.user.rol) {
+        case "userRecurrent":
+          followers!.style.display = 'none';
+          extraInfo!.style.display = 'none';
+          followers!.style.display = 'none';
+          break;
+        case "teacher":
+          followMeButton!.style.display = 'block';
+          MentorPub!.style.display = 'grid';
+          break;
+        case "enterprise":
+          buttonEnterprisePub!.style.display = 'grid';
+          followMeButton!.style.display = 'block';
+          break;
+      }
+    }
   }
   /** función actualizar followers */
-  
-  Follow(){
+
+  Follow() {
     let followMeButton = document.getElementById('followMeButton');
-    
+
 
     /** atributos de la person que sigue */
     let _idPerson = this.idLocalStorage;
@@ -289,7 +294,7 @@ export class ProfileComponent implements OnInit {
     let linkUserLogged = this.userLogged.link;
     let followersUserLogged: string[] = this.userLogged.followers;
     let followsUserLogged: Person[] = this.userLogged.follows;
-    
+
     /** fin clase*/
     /** atributos de la persona a la que estas siguiendo */
     let _id = this.user._id;
@@ -315,134 +320,134 @@ export class ProfileComponent implements OnInit {
       _id: _id,
       name: name
     }
-  /** fin clase  */
-    if(this.count == 0){
-        
-    followers.push(_idPerson)
+    /** fin clase  */
+    if (this.count == 0) {
 
-    const user: User = {
-      _id: _id,
-      name: name,
-      email: email,
-      rol: rol,
-      password: password,
-      files_id: files_id,
-      post_id: post_id,
-      bloq: bloq,
-      services: services,
-      booking: booking,
-      code: code,
-      active: active,
-      description: description,
-      category: category,
-      locate: locate,
-      followers: followers,
-      follows: follows,
-      link: link,
-    };
+      followers.push(_idPerson)
 
-    followsUserLogged.push(person)
+      const user: User = {
+        _id: _id,
+        name: name,
+        email: email,
+        rol: rol,
+        password: password,
+        files_id: files_id,
+        post_id: post_id,
+        bloq: bloq,
+        services: services,
+        booking: booking,
+        code: code,
+        active: active,
+        description: description,
+        category: category,
+        locate: locate,
+        followers: followers,
+        follows: follows,
+        link: link,
+      };
 
-    const userLogged: User = {
-      _id: _idUserLogged,
-      name: nameUserLogged,
-      email: emailUserLogged,
-      rol: rolUserLogged,
-      password: passwordUserLogged,
-      files_id: files_idUserLogged,
-      post_id: post_idUserLogged,
-      bloq: bloqUserLogged,
-      services: servicesUserLogged,
-      booking: bookingUserLogged,
-      code: codeUserLogged,
-      active: activeUserLogged,
-      description: descriptionUserLogged,
-      category: categoryUserLogged,
-      locate: locateUserLogged,
-      followers: followersUserLogged,
-      follows: followsUserLogged,
-      link: linkUserLogged,
-    };
+      followsUserLogged.push(person)
+
+      const userLogged: User = {
+        _id: _idUserLogged,
+        name: nameUserLogged,
+        email: emailUserLogged,
+        rol: rolUserLogged,
+        password: passwordUserLogged,
+        files_id: files_idUserLogged,
+        post_id: post_idUserLogged,
+        bloq: bloqUserLogged,
+        services: servicesUserLogged,
+        booking: bookingUserLogged,
+        code: codeUserLogged,
+        active: activeUserLogged,
+        description: descriptionUserLogged,
+        category: categoryUserLogged,
+        locate: locateUserLogged,
+        followers: followersUserLogged,
+        follows: followsUserLogged,
+        link: linkUserLogged,
+      };
 
       this.count++
-      
-      this.userService.putUser(userLogged, this.idLocalStorage).subscribe((res) => {})
-      this.userService.putUser(user, this.idsession).subscribe((res) =>{})
+
+      this.userService.putUser(userLogged, this.idLocalStorage).subscribe((res) => { })
+      this.userService.putUser(user, this.idsession).subscribe((res) => { })
 
       followMeButton!.style.backgroundColor = "var(--r)";
       followMeButton!.innerHTML = "Dejar de seguir";
 
-      this.noti.open('Siguiendo a '+this.user.name, 'Cerrar', {
+      this.noti.open('Siguiendo a ' + this.user.name, 'Cerrar', {
         panelClass: ["custom-snackbar1"],
         horizontalPosition: 'center',
         verticalPosition: 'bottom',
         duration: 5000
       });
-    }else{
-      
+    } else {
+
       let deleteId = followers.indexOf(_idPerson)
-      followers.splice(deleteId,1);
+      followers.splice(deleteId, 1);
 
-        const user: User = {
-          _id: _id,
-          name: name,
-          email: email,
-          rol: rol,
-          password: password,
-          files_id: files_id,
-          post_id: post_id,
-          bloq: bloq,
-          services: services,
-          booking: booking,
-          code: code,
-          active: active,
-          description: description,
-          category: category,
-          locate: locate,
-          followers: followers,
-          follows: follows,
-          link: link,
-        };
+      const user: User = {
+        _id: _id,
+        name: name,
+        email: email,
+        rol: rol,
+        password: password,
+        files_id: files_id,
+        post_id: post_id,
+        bloq: bloq,
+        services: services,
+        booking: booking,
+        code: code,
+        active: active,
+        description: description,
+        category: category,
+        locate: locate,
+        followers: followers,
+        follows: follows,
+        link: link,
+      };
 
-        let deletePersonFollow = followsUserLogged.indexOf(person)
-        followsUserLogged.splice(deletePersonFollow, 1)
+      let deletePersonFollow = followsUserLogged.indexOf(person)
+      followsUserLogged.splice(deletePersonFollow, 1)
 
-        const userLogged: User = {
-          _id: _idUserLogged,
-          name: nameUserLogged,
-          email: emailUserLogged,
-          rol: rolUserLogged,
-          password: passwordUserLogged,
-          files_id: files_idUserLogged,
-          post_id: post_idUserLogged,
-          bloq: bloqUserLogged,
-          services: servicesUserLogged,
-          booking: bookingUserLogged,
-          code: codeUserLogged,
-          active: activeUserLogged,
-          description: descriptionUserLogged,
-          category: categoryUserLogged,
-          locate: locateUserLogged,
-          followers: followersUserLogged,
-          follows: followsUserLogged,
-          link: linkUserLogged,
-        };
-        
+      const userLogged: User = {
+        _id: _idUserLogged,
+        name: nameUserLogged,
+        email: emailUserLogged,
+        rol: rolUserLogged,
+        password: passwordUserLogged,
+        files_id: files_idUserLogged,
+        post_id: post_idUserLogged,
+        bloq: bloqUserLogged,
+        services: servicesUserLogged,
+        booking: bookingUserLogged,
+        code: codeUserLogged,
+        active: activeUserLogged,
+        description: descriptionUserLogged,
+        category: categoryUserLogged,
+        locate: locateUserLogged,
+        followers: followersUserLogged,
+        follows: followsUserLogged,
+        link: linkUserLogged,
+      };
 
-        this.count--
-        
-        this.userService.putUser(userLogged, this.idLocalStorage).subscribe((res) => {})
-        this.userService.putUser(user, this.idsession).subscribe((res) =>{})
- 
-        followMeButton!.style.backgroundColor = "var(--c1)";
-        followMeButton!.innerHTML = "Seguir";
-        this.noti.open('Dejaste de seguir a '+user.name, 'Cerrar', {
-          panelClass: ["custom-snackbar"],
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-          duration: 5000
-        });
-        
+
+      this.count--
+
+      this.userService.putUser(userLogged, this.idLocalStorage).subscribe((res) => { })
+      this.userService.putUser(user, this.idsession).subscribe((res) => { })
+
+      followMeButton!.style.backgroundColor = "var(--c1)";
+      followMeButton!.innerHTML = "Seguir";
+      this.noti.open('Dejaste de seguir a ' + user.name, 'Cerrar', {
+        panelClass: ["custom-snackbar"],
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+        duration: 5000
+      });
+
     }
   }
   /**  fin funcion */
@@ -451,13 +456,13 @@ export class ProfileComponent implements OnInit {
   /** función para enviar postulación de Mentor */
 
   formApply = new FormGroup({
-    cellphone: new FormControl("",[Validators.required])
+    cellphone: new FormControl("", [Validators.required])
   })
 
-  Apply(){
+  Apply() {
     let cellphone = this.formApply.value.cellphone?.toString() || "";
     let contador = cellphone.length;
-    if(contador != 10){
+    if (contador != 10) {
       this.noti.open('El número es invalido', 'Cerrar', {
         panelClass: ["custom-snackbar"],
         horizontalPosition: 'center',
@@ -470,71 +475,71 @@ export class ProfileComponent implements OnInit {
     let requestValid: Boolean = false
 
     this.requestService.getRequestValid(this.idsession).subscribe(res => {
-        requestValid = res
-        
-        if(requestValid == false){
+      requestValid = res
+
+      if (requestValid == false) {
 
 
-          let cellphone = this.formApply.value.cellphone || "";
-      
-          let request = new Request("",this.user._id,this.user.name, cellphone)
-      
-          this.requestService.postRequest(request).subscribe(res => {
-            this.noti.open('Postulación enviada', 'Cerrar', {
-              panelClass: ["custom-snackbar1"],
-              horizontalPosition: 'center',
-              verticalPosition: 'bottom',
-              duration: 5000
-            });
-          }, err => { 
-            this.noti.open('Ese número de telefono ya ha sido registrado', 'Cerrar', {
-              panelClass: ["custom-snackbar"],
-              horizontalPosition: 'center',
-              verticalPosition: 'bottom',
-              duration: 5000
+        let cellphone = this.formApply.value.cellphone || "";
 
-            });
-          })
-        }else{
-          this.noti.open('Ya tienes una postulación enviada', 'Cerrar', {
-            panelClass: ["custom-snackbar"],
+        let request = new Request("", this.user._id, this.user.name, cellphone)
+
+        this.requestService.postRequest(request).subscribe(res => {
+          this.noti.open('Postulación enviada', 'Cerrar', {
+            panelClass: ["custom-snackbar1"],
             horizontalPosition: 'center',
             verticalPosition: 'bottom',
             duration: 5000
           });
-        }
-    })
-   
+        }, err => {
+          this.noti.open('Ese número de telefono ya ha sido registrado', 'Cerrar', {
+            panelClass: ["custom-snackbar"],
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+            duration: 5000
 
-    
+          });
+        })
+      } else {
+        this.noti.open('Ya tienes una postulación enviada', 'Cerrar', {
+          panelClass: ["custom-snackbar"],
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          duration: 5000
+        });
+      }
+    })
+
+
+
   }
   /** fin función */
-  buttons(){
+  buttons() {
     let makePost = document.querySelector('#makePost');
     makePost?.addEventListener('click', () => {
-      window.location.replace(environment.baseUrl+'makePost/'+this.idsession)
+      window.location.replace(environment.baseUrl + 'makePost/' + this.idsession)
     })
   }
-  
-  ModalOpen(modalId:String): void{
+
+  ModalOpen(modalId: String): void {
     let modals = document.querySelectorAll(`#${modalId}`) as NodeListOf<HTMLDivElement>;
     modals.forEach(modalId => {
       modalId!.classList.add('visto');
     });
   }
-  ModalClose(modalId:String): void{
+  ModalClose(modalId: String): void {
     let modals = document.querySelectorAll(`#${modalId}`) as NodeListOf<HTMLDivElement>;
     modals.forEach(modalId => {
       modalId!.classList.remove('visto');
     });
   }
 
-  gotoEdit(editProfile:string): void{
+  gotoEdit(editProfile: string): void {
     let ButtonEdit = document.querySelectorAll(`#${editProfile}`) as NodeListOf<HTMLButtonElement>;
     ButtonEdit.forEach(editProfile => {
       editProfile?.addEventListener('click', () => {
-        window.location.replace(environment.baseUrl+'editProfile/'+this.idsession)
-      }) 
+        window.location.replace(environment.baseUrl + 'editProfile/' + this.idsession)
+      })
     })
   }
 
