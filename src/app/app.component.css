@@ -102,6 +102,50 @@ a:link, a:hover, a:visited, a:active, a{
     color:black;
     text-decoration: none;
 }
+
 #LinkPriv{
     display: none;
+}
+
+/*---Modal Status---*/
+.Modal-status{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.5);
+    z-index: 90000;
+}
+.Modal{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 350px;
+    padding: 20px 50px;
+    border-right:5px solid var(--c2);
+    border-left:5px solid var(--c2);
+}
+.vistoM{
+    display: flex;
+}
+.active{
+    background-color: darkgreen;
+    color: var(--w);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.fall{
+    background-color: darkred;
+    color: var(--w);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.unknow{
+    background-color: darkgoldenrod;
+    color: var(--w);
+    border-radius: 10px;
+    padding: 5px;
 }

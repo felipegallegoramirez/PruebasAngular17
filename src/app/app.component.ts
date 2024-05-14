@@ -28,25 +28,22 @@ export class AppComponent implements OnInit {
   }
 
   modalStatus(){
-    const start = new Date();
     var element = document.getElementById("status");
+    let modal = document.getElementById('modalView');
+    modal?.classList.add('vistoM')
     this.status.get().subscribe(res=>{
       this.stat='Activo'
       if(element){
+        modal?.classList.remove('vistoM')
         element.classList.remove("unknow");
         element.classList.add("active");
       }
-      const end = new Date();
-    this.time=end.getTime() - start.getTime();
-
     },err=>{
       this.stat='Error'
       if(element){
       element.classList.remove("unknow");
       element.classList.add("fall");
       }
-      const end = new Date();
-      this.time=end.getTime() - start.getTime();
     })
   }
   
