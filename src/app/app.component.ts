@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from '../environments/environments';
 import { StatusService } from '../services/status.service';
 
@@ -10,16 +10,16 @@ import { StatusService } from '../services/status.service';
 export class AppComponent implements OnInit {
   title = 'PoliNet';
   idUser: String = "";
-  contador:number = 0;
+  contador: number = 0;
   rol: String = "";
-  stat:string='Desconocido'
-  time:number=0
+  stat: string = 'Desconocido'
+  time: number = 0
 
-  constructor( private status: StatusService ){
+  constructor(private status: StatusService) {
 
   }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.HideButton();
     this.closeSession();
     this.authUser();
@@ -27,30 +27,30 @@ export class AppComponent implements OnInit {
     this.CheckUsers();
   }
 
-  modalStatus(){
+  modalStatus() {
     var element = document.getElementById("status");
     let modal = document.getElementById('modalView');
     modal?.classList.add('vistoM')
-    this.status.get().subscribe(res=>{
-      this.stat='Activo'
-      if(element){
+    this.status.get().subscribe(res => {
+      if (element) {
+        this.stat = 'Activo'
         modal?.classList.remove('vistoM')
         element.classList.remove("unknow");
         element.classList.add("active");
       }
-    },err=>{
-      this.stat='Error'
-      if(element){
-      element.classList.remove("unknow");
-      element.classList.add("fall");
+    }, err => {
+      if (element) {
+        this.stat = 'Error'
+        element.classList.remove("unknow");
+        element.classList.add("fall");
       }
     })
   }
-  
-  navbarHide(){
+
+  navbarHide() {
     let box = document.getElementById('SideBar');
     let x = localStorage.getItem('User')
-    if(x == null) {
+    if (x == null) {
       box!.style.display = 'none'
     }
   }
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
 
   CheckUsers() {
     let buttonHour = document.getElementById('button3-hour');
-    let buttonCalendar = document.getElementById('button4-calendar');  
+    let buttonCalendar = document.getElementById('button4-calendar');
     let buttonMeetings = document.getElementById('button2-meetings');
     let linkPub = document.getElementById('LinkPub');
     let linkPriv = document.getElementById('LinkPriv');
@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
 
       switch (this.rol) {
         case "userRecurrent":
-          buttonMeetings !.style.display = 'none';
+          buttonMeetings!.style.display = 'none';
           buttonCalendar!.style.display = 'none';
           buttonHour!.style.display = 'none';
           break;
@@ -84,7 +84,7 @@ export class AppComponent implements OnInit {
         case "teacher":
           buttonHour!.style.display = 'flex';
           buttonCalendar!.style.display = 'flex';
-          buttonMeetings !.style.display = 'none';
+          buttonMeetings!.style.display = 'none';
           break;
         case "Admon":
           linkPub!.style.display = 'none';
@@ -95,31 +95,31 @@ export class AppComponent implements OnInit {
   }
 
   /** Función para visitar perfil con localstorage */
-  authUser(){
+  authUser() {
     let x = localStorage.getItem("User");
 
-    if(x!=null){
+    if (x != null) {
       let User = JSON.parse(x);
       this.idUser = User.id;
     }
   }
   /** Fin función */
-  
 
-  CloseSideBar(){
+
+  CloseSideBar() {
     let box = document.getElementById('SideBar');
     let words = document.getElementsByClassName('LinksWord') as HTMLCollectionOf<HTMLElement>;
     let Arrow = document.getElementById('Arrow');
 
-    if(this.contador == 0){
-    
+    if (this.contador == 0) {
+
       for (let i = 0; i < words.length; i++) {
         words[i].style.color = 'var(--sw)';
       }
       Arrow!.style.transform = 'rotate(180deg)';
       box!.style.transform = 'translate(-150px)';
       this.contador++;
-    }else{
+    } else {
       for (let i = 0; i < words.length; i++) {
         words[i].style.color = 'var(--b)';
         words[i].style.transition = 'color .2s linear';
@@ -130,22 +130,22 @@ export class AppComponent implements OnInit {
     }
   }
 
-  HideButton(){
+  HideButton() {
     let x = localStorage.getItem('User');
     let ButtonLogIn = document.getElementById('Log-in');
     let ButtonSignOut = document.getElementById('Sign-out');
-    if(x!=null){
+    if (x != null) {
       ButtonLogIn!.style.display = "none";
-      ButtonSignOut!.style.display= "block";
+      ButtonSignOut!.style.display = "block";
     }
   }
-  closeSession(){
+  closeSession() {
     let ButtonSignOut = document.getElementById('Sign-out');
-    ButtonSignOut?.addEventListener('click',() => {
-     localStorage.removeItem('User')
-     this.navbarHide();
-     window.location.replace(environment.baseUrl+'Login')
-     
+    ButtonSignOut?.addEventListener('click', () => {
+      localStorage.removeItem('User')
+      this.navbarHide();
+      window.location.replace(environment.baseUrl + 'Login')
+
     })
   }
 
