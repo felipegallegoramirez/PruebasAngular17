@@ -146,7 +146,8 @@ export class AppComponent implements OnInit {
     let ButtonSignOut = document.getElementById('Sign-out');
     ButtonSignOut?.addEventListener('click',() => {
      localStorage.removeItem('User')
-     window.location.replace(environment.baseUrl+'#/Login')
+     this.navbarHide();
+     window.location.replace(environment.baseUrl+'Login')
     })
   }
 
