@@ -54,9 +54,9 @@ export class AppComponent implements OnInit {
     let box = document.getElementById('SideBar');
     let x = localStorage.getItem('User')
     if(x == null) {
-      box!.style.display = 'none'
+      box!.style.display = 'none';
     }else{
-      window.location.reload();
+      box!.style.display = 'block';
     }
   }
 
