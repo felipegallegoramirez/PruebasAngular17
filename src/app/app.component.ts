@@ -25,9 +25,11 @@ export class AppComponent implements OnInit {
     this.authUser();
     this.navbarHide();
     this.CheckUsers();
+    this.modalStatus()
   }
 
-  modalStatus() {
+  modalStatus(){
+    const start = new Date();
     var element = document.getElementById("status");
     let modal = document.getElementById('modalView');
     modal?.classList.add('vistoM')
@@ -38,12 +40,16 @@ export class AppComponent implements OnInit {
         element.classList.remove("unknow");
         element.classList.add("active");
       }
+      const end = new Date();
+      this.time=end.getTime() - start.getTime();
     }, err => {
       if (element) {
         this.stat = 'Error'
         element.classList.remove("unknow");
         element.classList.add("fall");
       }
+      const end = new Date();
+      this.time=end.getTime() - start.getTime();
     })
   }
 
