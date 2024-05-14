@@ -112,11 +112,14 @@ a:link, a:hover, a:visited, a:active, a{
     display: none;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255,255,255,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 90000;
 }
 .Modal{
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
