@@ -53,8 +53,8 @@ export class AppComponent implements OnInit {
   navbarHide(){
     let box = document.getElementById('SideBar');
     let x = localStorage.getItem('User')
-    if(x != null) {
-      box!.style.display = 'block'
+    if(x == null) {
+      box!.style.display = 'none'
     }
   }
 
@@ -146,7 +146,9 @@ export class AppComponent implements OnInit {
     let ButtonSignOut = document.getElementById('Sign-out');
     ButtonSignOut?.addEventListener('click',() => {
      localStorage.removeItem('User')
+     this.navbarHide();
      window.location.replace(environment.baseUrl+'Login')
+     
     })
   }
 
