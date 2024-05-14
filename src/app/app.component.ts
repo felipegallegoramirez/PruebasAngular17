@@ -55,6 +55,8 @@ export class AppComponent implements OnInit {
     let x = localStorage.getItem('User')
     if(x == null) {
       box!.style.display = 'none'
+    }else{
+      window.location.reload();
     }
   }
 
