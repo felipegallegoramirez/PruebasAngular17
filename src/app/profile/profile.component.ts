@@ -189,7 +189,7 @@ export class ProfileComponent implements OnInit {
       this.postService.deletePost(delete_Id).subscribe((res) => {
         if (res) {
           window.alert('Se ha eliminado el post');
-          window.location.replace(environment.baseUrl + 'Profile/' + this.idsession)
+          window.location.reload()
         } else {
           window.alert('No se ha podido eliminar el post')
         }

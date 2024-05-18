@@ -93,6 +93,9 @@ export class AppComponent implements OnInit {
           buttonMeetings!.style.display = 'none';
           break;
         case "Admon":
+          buttonMeetings!.style.display = 'none';
+          buttonCalendar!.style.display = 'none';
+          buttonHour!.style.display = 'none';
           linkPub!.style.display = 'none';
           linkPriv!.style.display = 'flex';
           break;
