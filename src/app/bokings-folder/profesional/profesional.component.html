@@ -3,7 +3,7 @@
     <h1>Selecionar profesional</h1>
     <div class="profesional_grid">
       <div *ngFor="let profesional of profesionals;index as i;" (click)="select(i)"  class="card_profesional">
-        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="">
+        <img src="https://storage.googleapis.com/images-polinet.appspot.com/images/{{profesional.files_id[0]}}" alt="">
         <p>{{profesional.name}}</p>
       </div>
     </div>
