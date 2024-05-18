@@ -188,11 +188,21 @@ export class ProfileComponent implements OnInit {
     this.userService.putUser(user, _id).subscribe((res) => {
       this.postService.deletePost(delete_Id).subscribe((res) => {
         if (res) {
-          window.alert('Se ha eliminado el post');
+          this.noti.open('Has eliminado un post con exito', 'Cerrar', {
+            panelClass: ["custom-snackbar1"],
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+            duration: 5000
+          });
           window.location.reload()
-        } else {
-          window.alert('No se ha podido eliminar el post')
         }
+      }, err =>{
+        this.noti.open('No ha sido posible eliminar el post' , 'Cerrar', {
+          panelClass: ["custom-snackbar"],
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          duration: 5000
+        });
       })
     })
 

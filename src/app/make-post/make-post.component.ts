@@ -7,6 +7,7 @@ import { Comment, Post } from '../../models/post';
 import { User } from '../../models/user';
 import { Person } from '../../models/survey';
 import { environment } from '../../environments/environments';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-make-post',
@@ -18,7 +19,7 @@ export class MakePostComponent implements OnInit{
   idsession: string = "";
   userGets: User = new User; 
 
-  constructor(private activateRoute: ActivatedRoute, private userService: UserService, private postService: PostService){
+  constructor(private noti: MatSnackBar,private activateRoute: ActivatedRoute, private userService: UserService, private postService: PostService){
 
   }
 
@@ -83,7 +84,15 @@ export class MakePostComponent implements OnInit{
     let likes: Person[] = [];
     let comments: Comment[] = [];
     let photoReal = <HTMLInputElement> document.getElementById("foto");
-    
+    if(this.formMakePost.invalid){
+      this.noti.open('Debes completar todos los campos ', 'Cerrar', {
+        panelClass: ["custom-snackbar"],
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+        duration: 5000
+      });
+      return;
+    }else{
     if(photoReal.files != null){
       if(title  && photoReal && descriptionPost){
 
@@ -123,77 +132,29 @@ export class MakePostComponent implements OnInit{
       
       this.postService.createPostIMG(post, photoReal.files[0]).subscribe(res => {
         user.post_id.push(res._id);
-        this.userService.putUser(user, this.idsession).subscribe(res => {
-          if(res){
-            console.log("se actualizo")
-          }
-        })
+        this.userService.putUser(user, this.idsession).subscribe(res => {})
         if(res){
+          this.noti.open('Se ha publicado un post, seras redireccionado', 'Cerrar', {
+            panelClass: ["custom-snackbar1"],
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+            duration: 5000
+          });
           this.formMakePost.reset();
-          window.alert("Has publicado este post")
           window.location.replace(environment.baseUrl+"Profile/"+this.idsession);
-        }else{
-          window.alert("No se pudo realizar")
         }
-      })
-      }
-    }else{
-      if(title  && photoReal && descriptionPost){
-
-
-        const post: Post = {
-          _id: _idPost, 
-          title: title,
-          image: photoPost,
-          description: descriptionPost,
-          creator_image: creator_image,
-          creator_name: creator_name,
-          creator_id: creator_id,
-          likes: likes,
-          comments: comments
-        }
-        const user: User = {
-          _id: _id,
-         name: name,
-         email: email,
-         rol: rol,
-         password: password,
-         files_id: files_id,
-         post_id: post_id,
-         bloq: bloq,
-         services: services,
-         booking: booking,
-         code: code,
-         active: active,
-         description: description,
-         category: category,
-         locate: locate,
-         followers: followers,
-         follows: follows,
-         link: link,
-       }
-       
-      
-      this.postService.createPost(post).subscribe(res => {
-        user.post_id.push(res._id);
-        this.userService.putUser(user, this.idsession).subscribe(res => {
-          if(res){
-            console.log("se actualizo")
-          }
-        })
-        if(res){
-          this.formMakePost.reset();
-          window.alert("Has publicado este post")
-          window.location.replace(environment.baseUrl+"Profile/"+this.idsession);
-        }else{
-          window.alert("No se pudo realizar")
-        }
+      },err => {
+        this.noti.open('Ha ocurrido un error', 'Cerrar', {
+          panelClass: ["custom-snackbar"],
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          duration: 5000
+        });
       })
       }
     }
-    
     }
-  
+  }  
 
   
 

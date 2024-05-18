@@ -14,10 +14,6 @@ export class PostService {
 
   private apiUrl = environment.backend+'api/';
 
-  createPost(post:Post){
-    return this.http.post<Post>(this.apiUrl + "post/", post);
-  }
-
   createPostIMG(post:Post, file: File){
     const fd = new FormData()
 

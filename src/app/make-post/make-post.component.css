@@ -93,3 +93,23 @@ button:hover{
     background-color: var(--sw);
     color: var(--c1);
 }
+
+/*-----notificaciones---*/
+::ng-deep .custom-snackbar1 {
+    border-radius: 2px !important;
+    outline: 2px solid var(--c1);
+    margin-bottom: 100px !important ;
+    --mdc-snackbar-container-color: var(--sw);
+    --mdc-snackbar-supporting-text-color: var(--b);
+}
+::ng-deep .custom-snackbar{
+    border-radius: 2px !important;
+    outline: 2px solid var(--r);
+    margin-bottom: 100px !important ;
+    --mdc-snackbar-container-color: var(--sw);
+    --mdc-snackbar-supporting-text-color: var(--b);
+}
+::ng-deep .custom-snackbar button, ::ng-deep .custom-snackbar1 button{
+    background-color: var(--c1) !important; 
+    color: var(--sw) !important;
+}
